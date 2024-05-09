@@ -11,9 +11,22 @@
 <!-- onresize esta fachamdo a função ajustaTamanhoPalcoJogo, para toda vez que mecherem
 no tamanho do Browser, a altura e largura seja adaptada pela função -->
 <body onresize="ajustaTamanhoPalcoJogo()">
+    <div class="painel">
 
+        <div class="vidas">
+            <img src="/imagens/coracao_vazio.png" />
+            <img src="/imagens/coracao_cheio.png" />
+            <img src="/imagens/coracao_cheio.png" />
+        </div>
+
+        <div class="cronometro">
+            Tempo restante: ?
+        </div>
+
+    </div>
     <script>
-        posicaoRandomica()
+        //  Chama a função posicaoRandomica() a cada 1000 milissegundos
+        setInterval(function() {posicaoRandomica()}, 1000)
     </script>
 
 </body>
