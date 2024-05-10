@@ -3,6 +3,27 @@
 var altura = 0
 var largura = 0
 var vidas_perdidas = 1
+var tempo = 30
+var criaMosquitoTempo = 1500
+// O window.location.search pega apenas a query string da url, ou seja tudo que
+// esta a direita da '?' incluindo ela
+
+var tamanhoBg = document.getElementById ('bg')
+tamanhoBg.style.left = window.innerHeight
+console.log (tamanhoBg)
+
+var nivel = window.location.search
+
+// replace substitu o primeiro carcter indicado, pelo segundo caracter indicado
+nivel = nivel.replace('?','')
+
+if (nivel === 'normal') {
+    criaMosquitoTempo = 1500
+} else if (nivel === 'dificil') {
+    criaMosquitoTempo = 1000
+} else if ( nivel === 'chucknorris') {
+    criaMosquitoTempo = 750
+}
 
 function ajustaTamanhoPalcoJogo () {
 
@@ -12,8 +33,22 @@ function ajustaTamanhoPalcoJogo () {
     console.log(altura, largura)
 }
 
-ajustaTamanhoPalcoJogo()
+ajustaTamanhoPalcoJogo() 
 
+var cronometro = setInterval(function(){
+    
+    tempo -= 1 
+
+    if (tempo < 0) {
+        clearInterval(cronometro)
+        clearInterval(criaMosquito)
+        window.location.href = 'vitoria.html'
+
+    } else {
+        document.getElementById ('cronometro').innerHTML = tempo
+    }
+
+}, 1000)
 
 // Cria o mosquito aleatoriamente
 function posicaoRandomica() {
@@ -24,7 +59,9 @@ function posicaoRandomica() {
 // e altera a imagem da vida caso ainda exista um mosquito vivo e adciona +1 na variavel vidas_perdidas
 // O if verifica se a variavel vidas_perdidas valer mais que 3 ele retorna o Game Over
         if (vidas_perdidas > 3) {
-            alert('Interromper o jogo (Game Over)')
+// Usa o Atributo window do BOM para redirecionar para a pagina de fim de jogo
+            window.location.href = 'fim_de_jogo.html'
+
         } else {
             document.getElementById ('v' + vidas_perdidas).src = "imagens/coracao_vazio.png"
             vidas_perdidas++
@@ -70,6 +107,10 @@ function posicaoRandomica() {
 
 
 }
+ 
+
+
+
 
 // Gera mosquito de tamanho aleatorio
 function tamanhoAleatrorio() {

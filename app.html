@@ -10,7 +10,7 @@
 
 <!-- onresize esta fachamdo a função ajustaTamanhoPalcoJogo, para toda vez que mecherem
 no tamanho do Browser, a altura e largura seja adaptada pela função -->
-<body onresize="ajustaTamanhoPalcoJogo()">
+<body id='bg'onresize="ajustaTamanhoPalcoJogo()">
     <div class="painel">
 
         <div class="vidas">
@@ -20,13 +20,18 @@ no tamanho do Browser, a altura e largura seja adaptada pela função -->
         </div>
 
         <div class="cronometro">
-            Tempo restante: ?
+            Tempo restante: <span id="cronometro">
+
+            </span>
         </div>
 
     </div>
     <script>
+    
         //  Chama a função posicaoRandomica() a cada 1000 milissegundos
-        setInterval(function() {posicaoRandomica()}, 1000)
+        document.getElementById ('cronometro').innerHTML = tempo
+        var criaMosquito = setInterval(function() {posicaoRandomica()}, criaMosquitoTempo)
+        
     </script>
 
 </body>
