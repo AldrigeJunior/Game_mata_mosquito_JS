@@ -8,9 +8,9 @@ var criaMosquitoTempo = 1500
 // O window.location.search pega apenas a query string da url, ou seja tudo que
 // esta a direita da '?' incluindo ela
 
-var tamanhoBg = document.getElementById ('bg')
-tamanhoBg.style.left = window.innerHeight
-console.log (tamanhoBg)
+// var tamanhoBg = document.getElementById ('bg')
+// tamanhoBg.style.left = window.innerHeight
+// console.log (tamanhoBg)
 
 var nivel = window.location.search
 
